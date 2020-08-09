@@ -9,6 +9,7 @@ ja:
         id: ID
         name: 名前
         tag: タグ
+        image: 画像
       tag:
         delete: 削除
       menu:

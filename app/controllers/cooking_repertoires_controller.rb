@@ -42,7 +42,7 @@ class CookingRepertoiresController < ApplicationController
   private
 
   def cooking_repertoire_params
-    params.require(:cooking_repertoire).permit(:name, { tag_ids: [] })
+    params.require(:cooking_repertoire).permit(:name, :image, { tag_ids: [] })
   end
 
   def find_repertoire

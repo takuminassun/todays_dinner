@@ -1,4 +1,6 @@
 class CookingRepertoire < ApplicationRecord
+  mount_uploader :image, ImageUploader
+
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
 
   validate :tag_size_limit

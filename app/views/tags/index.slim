@@ -4,15 +4,19 @@ h4.py-3.bg-warning.text-light.text-center.fixed-top
   - if flash.notice.present? 
     .alert.alert-success.my-2.text-break = flash.notice
 - @tags.each do |tag|
+  h5.border-bottom.p-3 = tag.name
   .container
-    h5.border-bottom.py-3 = tag.name
-  .container.d-flex.flex-wrap
     - if tag.cooking_repertoires.present?
       - tag.cooking_repertoires.each do |cooking_repertoire|
         - unless cooking_repertoire.tags.exists?(name: t('activerecord.attributes.tag.delete'))
-          .col-6.col-md-3.p-2
-            .card
-              .card-body.w-100.h-100.position-absolute.overflow-auto
-                = link_to cooking_repertoire.name, cooking_repertoire_path(cooking_repertoire.id), class: 'stretched-link'
+          .row.position-relative.heigth-100
+            .col-4
+              - if cooking_repertoire.image?
+                = image_tag cooking_repertoire.image.url
+              - else
+                = image_tag 'no-image.png'
+            .col-8.position-static.d-flex.align-items-center
+              = link_to cooking_repertoire.name, cooking_repertoire_path(cooking_repertoire.id), class: 'stretched-link'
+          hr
     - else
       = t('.no_repertoire_name')

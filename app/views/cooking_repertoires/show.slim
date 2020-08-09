@@ -17,11 +17,14 @@ h4.py-3.bg-warning.text-light.text-center.fixed-top
               = cooking_repertoire_tag.tag.name
             - else
               = "#{cooking_repertoire_tag.tag.name}, "
-      tr
-        th = CookingRepertoire.human_attribute_name(:created_at)
-        td = @cooking_repertoire.created_at.to_s(:datetime_jp)
-      tr
-        th = CookingRepertoire.human_attribute_name(:updated_at)
-        td = @cooking_repertoire.updated_at.to_s(:datetime_jp)
-.container.text-center
+
+.container
+  .row
+    .col
+      - if @cooking_repertoire.image?
+            = image_tag @cooking_repertoire.image.url
+      - else
+        = image_tag 'no-image.png'
+
+.container.text-center.mt-4
   = link_to t('.delete'), cooking_repertoire_tags_path(@cooking_repertoire), method: :post, data: { confirm: t('.delete_confirmation', {name: @cooking_repertoire.name}) }, class: 'btn btn-danger center-block'

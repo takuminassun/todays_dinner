@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_044713) do
 
   create_table "cooking_repertoires", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_cooking_repertoires_on_name", unique: true
